@@ -1,0 +1,81 @@
+global:
+  kafka:
+    bootstrap: "helep-kafka-bootstrap:9092"
+  jwtSecret: "change-me-in-production"
+  imageRegistry: ""
+
+user-service:
+  image:
+    repository: helep-user-service
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 2
+  port: 8001
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+sos-service:
+  image:
+    repository: helep-sos-service
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 2
+  port: 8002
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+dispatch-service:
+  image:
+    repository: helep-dispatch-service
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 2
+  port: 8003
+  matcher: "nearest"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+notification-service:
+  image:
+    repository: helep-notification-service
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 2
+  port: 8004
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+analytics-service:
+  image:
+    repository: helep-analytics-service
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  port: 8005
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
